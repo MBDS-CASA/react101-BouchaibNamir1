@@ -6,8 +6,8 @@ function MainContent() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(timer);
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
   }, []);
 
   const jour = String(now.getDate()).padStart(2, "0");
@@ -16,12 +16,15 @@ function MainContent() {
 
   const heure = String(now.getHours()).padStart(2, "0");
   const minute = String(now.getMinutes()).padStart(2, "0");
-  const seconde = String(now.getSeconds()).padStart(2, "0");
+  const second = String(now.getSeconds()).padStart(2, "0");
 
   return (
     <main className="main">
+      {/* ✅ TITRE PRINCIPAL (ajout seulement) */}
+      <h1 className="app-title">EMSI | Plateforme d’apprentissage</h1>
+
       <p className="info">
-        Bonjour, on est le {jour}/{mois}/{annee} et il est {heure}:{minute}:{seconde}
+        Bonjour, on est le {jour}/{mois}/{annee} et il est {heure}:{minute}:{second}
       </p>
 
       <p className="hint">Ici, nous afficherons des informations intéressantes :)</p>
@@ -32,7 +35,7 @@ function MainContent() {
         </button>
       </div>
 
-      {/* Recherche dans le JSON */}
+      {/* ✅ ON GARDE LE BLOC RÉSULTAT (SearchById) */}
       <SearchById />
     </main>
   );

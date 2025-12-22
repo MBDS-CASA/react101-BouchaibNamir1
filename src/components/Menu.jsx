@@ -12,9 +12,16 @@ export default function Menu({ activeKey, onChange }) {
   return (
     <aside className="sidebar">
       <div className="sidebar__top">
-        {/* Mets ton logo dans /public/logo.png (tu l’as ouvert dans VSCode) */}
         <img className="sidebar__logo" src="/logo.png" alt="EMSI" />
-        <div className="sidebar__title">EMSI | Plateforme d’apprentissage</div>
+
+        <div className="sidebar__text">
+          <div className="sidebar__title">
+            EMSI | Plateforme d’apprentissage
+          </div>
+          <div className="sidebar__subtitle">
+            Paramètres pédagogiques
+          </div>
+        </div>
       </div>
 
       <div className="sidebar__menu">

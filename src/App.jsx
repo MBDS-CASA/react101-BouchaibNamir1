@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Menu from "./components/Menu";
 import ContentView from "./components/ContentView";
+import Footer from "./components/Footer";
 import "./App.css";
 
 export default function App() {
@@ -9,7 +10,11 @@ export default function App() {
   return (
     <div className="layout">
       <Menu activeKey={activeKey} onChange={setActiveKey} />
-      <ContentView activeKey={activeKey} />
+
+      <div className="main">
+        <ContentView activeKey={activeKey} />
+        <Footer />   {/* ✅ TOUJOURS EN BAS, POUR TOUS LES MENUS */}
+      </div>
     </div>
   );
 }

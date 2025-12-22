@@ -1,11 +1,9 @@
-function Footer() {
-  const annee = new Date().getFullYear();
+import "./Footer.css";
 
+export default function Footer() {
   return (
     <footer className="footer">
-      © {annee} - Bouchaib.Namir, Tous droits réservés.
+      © 2025 - Bouchaib.Namir, Tous droits réservés.
     </footer>
   );
 }
-
-export default Footer;

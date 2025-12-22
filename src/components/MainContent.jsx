@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SearchById from "./SearchById";
+import Footer from "./Footer"; // ✅ AJOUT
 
 function MainContent() {
   const [now, setNow] = useState(new Date());
@@ -20,23 +21,28 @@ function MainContent() {
 
   return (
     <main className="main">
-      {/* ✅ TITRE PRINCIPAL (ajout seulement) */}
-      <h1 className="app-title">EMSI | Plateforme d’apprentissage</h1>
+      {/* 🔽 CONTENU CENTRAL */}
+      <div className="main-content">
+        <h1 className="app-title">EMSI | Plateforme d’apprentissage</h1>
 
-      <p className="info">
-        Bonjour, on est le {jour}/{mois}/{annee} et il est {heure}:{minute}:{second}
-      </p>
+        <p className="info">
+          Bonjour, on est le {jour}/{mois}/{annee} et il est {heure}:{minute}:{second}
+        </p>
 
-      <p className="hint">Ici, nous afficherons des informations intéressantes :)</p>
+        <p className="hint">
+          Ici, nous afficherons des informations intéressantes :)
+        </p>
 
-      <div className="card">
-        <button className="btn" onClick={() => setCount(count + 1)}>
-          count is {count}
-        </button>
+        <div className="card">
+          <button className="btn" onClick={() => setCount(count + 1)}>
+            count is {count}
+          </button>
+        </div>
+
+        <SearchById />
       </div>
 
-      {/* ✅ ON GARDE LE BLOC RÉSULTAT (SearchById) */}
-      <SearchById />
+    
     </main>
   );
 }

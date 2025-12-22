@@ -1,13 +1,9 @@
 function Header() {
   return (
-    <header style={{ textAlign: "center", padding: "20px" }}>
-      <img
-        src="/logo.png"
-        alt="Logo EMSI"
-        style={{ width: "120px" }}
-      />
-      <h1>Introduction à React</h1>
-      <h2>A la découverte des premières notions de React</h2>
+    <header className="header">
+      <img className="logo" src="/logo.png" alt="Logo EMSI" />
+      <h1 className="title">Introduction à React</h1>
+      <h2 className="subtitle">A la découverte des premières notions de React</h2>
     </header>
   );
 }

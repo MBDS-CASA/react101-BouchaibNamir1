@@ -1,18 +1,15 @@
-import Header from "./components/Header";
-import MainContent from "./components/MainContent";
-import Footer from "./components/Footer";
+import { useState } from "react";
+import Menu from "./components/Menu";
+import ContentView from "./components/ContentView";
 import "./App.css";
 
-function App() {
+export default function App() {
+  const [activeKey, setActiveKey] = useState("ACCUEIL");
+
   return (
-    <div className="page">
-      <div className="container">
-        <Header />
-        <MainContent />
-      </div>
-      <Footer />
+    <div className="layout">
+      <Menu activeKey={activeKey} onChange={setActiveKey} />
+      <ContentView activeKey={activeKey} />
     </div>
   );
 }
-
-export default App;

@@ -9,8 +9,6 @@ function Header() {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <img src="/logo.png" alt="EMSI" />
-        {/* ✅ Texte pro sous le logo */}
-        <h3 className="sidebar-title">Espace pédagogique</h3>
       </div>
 
       <nav className="sidebar-menu">

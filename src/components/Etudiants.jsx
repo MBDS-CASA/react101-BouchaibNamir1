@@ -1,29 +1,40 @@
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import data from "../data/data.json";
-import BasicTable from "./BasicTable";
+
+import DataTable from "./DataTable";
+
+// MUI
+import Button from "@mui/material/Button";
 
 export default function Etudiants() {
   const navigate = useNavigate();
 
-  const rows = data.map((n) => ({
-    id: n.student.id,
-    prenom: n.student.firstname,
-    nom: n.student.lastname,
-    action: (
-      <button
-        onClick={() => navigate(`/etudiants/${n.student.id}`)}
-        style={{
-          padding: "6px 12px",
-          borderRadius: 8,
-          border: "none",
-          background: "#1e8e3e",
-          color: "white",
-          fontWeight: "bold",
-          cursor: "pointer",
-        }}
+  // Liste unique des étudiants (pas répétée)
+  const students = useMemo(() => {
+    const map = new Map();
+    data.forEach((n) => {
+      const s = n.student;
+      if (s?.id && !map.has(s.id)) {
+        map.set(s.id, { id: s.id, prenom: s.firstname, nom: s.lastname });
+      }
+    });
+    return Array.from(map.values());
+  }, []);
+
+  const rows = students.map((s) => ({
+    id: s.id,
+    prenom: s.prenom,
+    nom: s.nom,
+    details: (
+      <Button
+        variant="contained"
+        size="small"
+        onClick={() => navigate(`/etudiants/${s.id}`)}
+        sx={{ textTransform: "none", borderRadius: 2 }}
       >
         Détails
-      </button>
+      </Button>
     ),
   }));
 
@@ -31,13 +42,17 @@ export default function Etudiants() {
     { key: "id", label: "ID" },
     { key: "prenom", label: "Prénom" },
     { key: "nom", label: "Nom" },
-    { key: "action", label: "Actions" },
+    { key: "details", label: "Détails" },
   ];
 
   return (
     <main className="main">
-      <h1 className="app-title">Étudiants</h1>
-      <BasicTable columns={columns} rows={rows} />
+      <h1 className="app-title">Etudiants</h1>
+
+      {/* ✅ on garde ton design, juste un container propre */}
+      <div style={{ width: "min(1100px, 92%)", margin: "0 auto" }}>
+        <DataTable columns={columns} rows={rows} />
+      </div>
     </main>
   );
 }

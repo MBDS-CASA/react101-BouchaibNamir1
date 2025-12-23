@@ -1,22 +1,31 @@
+import { useMemo } from "react";
 import data from "../data/data.json";
-import BasicTable from "./BasicTable";
+import DataTable from "./DataTable";
 
 export default function Matieres() {
-  // on extrait les matières uniques
-  const rows = [...new Set(data.map((n) => n.course))].map((c, index) => ({
-    id: index + 1,
-    matiere: c,
+  const matieres = useMemo(() => {
+    return [...new Set(data.map((n) => n.course))].sort((a, b) =>
+      String(a).localeCompare(String(b), "fr", { sensitivity: "base" })
+    );
+  }, []);
+
+  const rows = matieres.map((m, idx) => ({
+    id: idx + 1,
+    matiere: m,
   }));
 
   const columns = [
-    { key: "id", label: "ID" },
+    { key: "id", label: "#" },
     { key: "matiere", label: "Matière" },
   ];
 
   return (
     <main className="main">
       <h1 className="app-title">Matières</h1>
-      <BasicTable columns={columns} rows={rows} />
+
+      <div style={{ width: "min(900px, 92%)", margin: "0 auto" }}>
+        <DataTable columns={columns} rows={rows} />
+      </div>
     </main>
   );
 }

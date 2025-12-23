@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import data from "../data/data.json";
 
 function SearchById() {
-  const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [result, setResult] = useState(null);
   const [searched, setSearched] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((json) => setData(json))
-      .catch(() => setData([]))
-      .finally(() => setLoading(false));
-  }, []);
 
   const handleSearch = () => {
-    const found = data.find((item) => item.unique_id === Number(id)) || null;
+    const found =
+      data.find((item) => item.unique_id === Number(id)) || null;
     setResult(found);
     setSearched(true);
   };
@@ -39,18 +31,18 @@ function SearchById() {
 
         <button
           onClick={handleSearch}
-          disabled={loading || id === ""}
+          disabled={id === ""}
           style={{
             padding: "10px 18px",
             borderRadius: 8,
-            background: loading || id === "" ? "#999" : "#1e8e3e",
+            background: id === "" ? "#999" : "#1e8e3e",
             color: "white",
             border: "none",
             fontWeight: "bold",
-            cursor: loading || id === "" ? "not-allowed" : "pointer",
+            cursor: id === "" ? "not-allowed" : "pointer",
           }}
         >
-          {loading ? "Chargement..." : "Chercher"}
+          Chercher
         </button>
       </div>
 
@@ -72,13 +64,17 @@ function SearchById() {
               <p><b>ID :</b> {result.unique_id}</p>
               <p><b>Cours :</b> {result.course}</p>
               <p>
-                <b>Étudiant :</b> {result.student.firstname} {result.student.lastname} (id: {result.student.id})
+                <b>Étudiant :</b>{" "}
+                {result.student.firstname} {result.student.lastname} (id:{" "}
+                {result.student.id})
               </p>
               <p><b>Date :</b> {result.date}</p>
               <p><b>Note :</b> {result.grade}</p>
             </div>
           ) : (
-            <p style={{ color: "red", fontWeight: "bold" }}>Aucun résultat trouvé</p>
+            <p style={{ color: "red", fontWeight: "bold" }}>
+              Aucun résultat trouvé
+            </p>
           )}
         </div>
       )}

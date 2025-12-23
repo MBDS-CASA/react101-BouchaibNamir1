@@ -13,15 +13,8 @@ export default function Menu({ activeKey, onChange }) {
     <aside className="sidebar">
       <div className="sidebar__top">
         <img className="sidebar__logo" src="/logo.png" alt="EMSI" />
-
-        <div className="sidebar__text">
-          <div className="sidebar__title">
-            EMSI | Plateforme d’apprentissage
-          </div>
-          <div className="sidebar__subtitle">
-            Paramètres pédagogiques
-          </div>
-        </div>
+        <div className="sidebar__title">EMSI | Plateforme d’apprentissage</div>
+        <div className="sidebar__subtitle">Paramètres pédagogiques</div>
       </div>
 
       <div className="sidebar__menu">

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchById from "./SearchById";
-import Footer from "./Footer"; // ✅ AJOUT
 
-function MainContent() {
+export default function MainContent() {
   const [now, setNow] = useState(new Date());
   const [count, setCount] = useState(0);
 
@@ -21,30 +20,21 @@ function MainContent() {
 
   return (
     <main className="main">
-      {/* 🔽 CONTENU CENTRAL */}
-      <div className="main-content">
-        <h1 className="app-title">EMSI | Plateforme d’apprentissage</h1>
+      <h1 className="app-title">EMSI | Plateforme d’apprentissage</h1>
 
-        <p className="info">
-          Bonjour, on est le {jour}/{mois}/{annee} et il est {heure}:{minute}:{second}
-        </p>
+      <p className="info">
+        Bonjour, on est le {jour}/{mois}/{annee} et il est {heure}:{minute}:{second}
+      </p>
 
-        <p className="hint">
-          Ici, nous afficherons des informations intéressantes :)
-        </p>
+      <p className="hint">Ici, nous afficherons des informations intéressantes :)</p>
 
-        <div className="card">
-          <button className="btn" onClick={() => setCount(count + 1)}>
-            count is {count}
-          </button>
-        </div>
-
-        <SearchById />
+      <div className="card">
+        <button className="btn" onClick={() => setCount((c) => c + 1)}>
+          count is {count}
+        </button>
       </div>
 
-    
+      <SearchById />
     </main>
   );
 }
-
-export default MainContent;

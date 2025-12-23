@@ -1,19 +1,22 @@
 import MainContent from "./MainContent";
+import Notes from "./Notes";
+import Etudiants from "./Etudiants";
+import Matieres from "./Matieres";
+import Apropos from "./Apropos";
 
 export default function ContentView({ activeKey }) {
-  if (activeKey === "ACCUEIL") return <MainContent />;
-
-  const labels = {
-    NOTES: "Notes",
-    ETUDIANTS: "Etudiants",
-    MATIERES: "Matières",
-    APROPOS: "A propos",
-  };
-
-  return (
-    <main className="main">
-      <h1 className="app-title">{labels[activeKey]}</h1>
-      <p className="hint">Contenu : {labels[activeKey]}</p>
-    </main>
-  );
+  switch (activeKey) {
+    case "ACCUEIL":
+      return <MainContent />;
+    case "NOTES":
+      return <Notes />;
+    case "ETUDIANTS":
+      return <Etudiants />;
+    case "MATIERES":
+      return <Matieres />;
+    case "APROPOS":
+      return <Apropos />;
+    default:
+      return <MainContent />;
+  }
 }

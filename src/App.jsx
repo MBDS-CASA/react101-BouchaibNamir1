@@ -9,6 +9,7 @@ import Notes from "./components/Notes";
 import Etudiants from "./components/Etudiants";
 import Matieres from "./components/Matieres";
 import Apropos from "./components/Apropos";
+import StudentDetails from "./components/StudentDetails";
 
 export default function App() {
   const location = useLocation();
@@ -49,6 +50,8 @@ export default function App() {
           <Route path="/etudiants" element={<Etudiants />} />
           <Route path="/matieres" element={<Matieres />} />
           <Route path="/apropos" element={<Apropos />} />
+          <Route path="/etudiants/:id" element={<StudentDetails />} />
+
         </Routes>
 
         <Footer />
